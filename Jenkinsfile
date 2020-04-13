@@ -2,7 +2,7 @@ pipeline{
     agent{label 'master'}
         stages{
             stage('git repo download'){
-                step{
+                steps{
                     script{
                         git credentialsId: 'ab3dc1cd-f4c2-4721-87a4-0c01891fa71d', url: 'https://github.com/jeff5757/gameoflife-1.git'
                     }
@@ -11,7 +11,7 @@ pipeline{
 
  
             stage('maven compilation'){
-                step{
+                steps{
                     script{
                         withMaven(jdk: 'jdk8', maven: 'maven'){
                             sh 'mvn clean install'
@@ -22,7 +22,7 @@ pipeline{
 
  
             stage('nexus artifacy upload'){
-                step{
+                steps{
                     script{
                         nexusArtifactUploader credentialsId: 'nexus', groupId: 'be.cegeka', nexusUrl: '13.233.3.65:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'Releases', version: '0.0.1'
                     }
