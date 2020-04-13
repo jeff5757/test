@@ -24,7 +24,7 @@ pipeline{
             stage('nexus artifacy upload'){
                 step{
                     script{
-                        nexusArtifactUploader credentialsId: '', groupId: 'be.cegeka', nexusUrl: '13.233.3.65:8081/nexus/', nexusVersion: 'nexus2', protocol: 'http', repository: 'Releases', version: '0.0.1'
+                        nexusArtifactUploader credentialsId: 'nexus', groupId: 'be.cegeka', nexusUrl: '13.233.3.65:8081/nexus', nexusVersion: 'nexus2', protocol: 'http', repository: 'Releases', version: '0.0.1'
                     }
                 }
             }
